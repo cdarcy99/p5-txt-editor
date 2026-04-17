@@ -12,15 +12,16 @@
 #include <list>
 #include <string>
 // Uncomment the following line to use your List implementation
-// #include "List.hpp"
+#include "List.hpp"
 
 class TextBuffer {
   // Comment out the following two lines and uncomment the two below
   // to use your List implementation
-  using CharList = std::list<char>;
-  using Iterator = std::list<char>::iterator;
-  // using CharList = List<char>;
-  // using Iterator = List<char>::Iterator;
+ // using CharList = std::list<char>;
+ // using Iterator = std::list<char>::iterator;
+   using CharList = List<char>;
+   using Iterator = List<char>::Iterator;
+
 
 private:
   CharList data;           // linked list that contains the characters
@@ -52,6 +53,7 @@ private:
   // function must restore them before it returns).
 
 public:
+
   //EFFECTS: Creates an empty text buffer. Its cursor is at the past-the-end
   //         position, with row 1, column 0, and index 0.
   TextBuffer();
@@ -74,7 +76,6 @@ public:
   //NOTE:     Your implementation must update the row, column, and index
   //          if appropriate to maintain all invariants.
   bool backward();
-
   //MODIFIES: *this
   //EFFECTS:  Inserts a character in the buffer before the cursor position.
   //          If the cursor is at the past-the-end position, this means the
@@ -94,7 +95,6 @@ public:
   //NOTE:     Your implementation must update the row, column, and index
   //          if appropriate to maintain all invariants.
   bool remove();
-
   //MODIFIES: *this
   //EFFECTS:  Moves the cursor to the start of the current row (column 0).
   //NOTE:     Your implementation must update the row, column, and index
@@ -147,7 +147,6 @@ public:
 
   //EFFECTS:  Returns whether the cursor is at the past-the-end position.
   bool is_at_end() const;
-
   //REQUIRES: the cursor is not at the past-the-end position
   //EFFECTS:  Returns the character at the current cursor
   char data_at_cursor() const;
@@ -177,6 +176,7 @@ private:
   //NOTE: This does not assume that the "column" member variable has
   //      a correct value (i.e. the row/column INVARIANT can be broken).
   int compute_column() const;
+  
 };
 
 #endif // TEXTBUFFER_HPP
